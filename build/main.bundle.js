@@ -121,6 +121,18 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 
 /***/ }),
 
+/***/ "./src/View.ts":
+/*!*********************!*\
+  !*** ./src/View.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.btns = document.querySelectorAll('button');\r\nexports.form = document.querySelector('form');\r\nexports.formAct = document.querySelector('form span');\r\nexports.input = document.querySelector('input');\r\nexports.error = document.querySelector('.error');\r\n\n\n//# sourceURL=webpack:///./src/View.ts?");
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -129,7 +141,7 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__webpack_require__(/*! ./main.scss */ \"./src/main.scss\");\r\nvar View_1 = __webpack_require__(/*! ./View */ \"./src/View.ts\");\r\nvar activity = 'cycling';\r\nView_1.btns.forEach(function (btn) {\r\n    btn.addEventListener('click', function (e) {\r\n        // get activity\r\n        activity = e.target.dataset.activity;\r\n        // remove and add active class\r\n        View_1.btns.forEach(function (btn) { return btn.classList.remove('active'); });\r\n        e.target.classList.add('active');\r\n        // set id of input field\r\n        if (View_1.input && activity)\r\n            View_1.input.setAttribute('id', activity);\r\n        // set text of form span\r\n        if (View_1.formAct && activity)\r\n            View_1.formAct.textContent = activity;\r\n    });\r\n});\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 

@@ -2,11 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const config = {
-	entry: './src/index.ts',
+	entry: { main: './src/index.ts', vendor: './src/vendor.ts' },
 	mode: 'development',
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'bundle.js'
+		filename: '[name].bundle.js'
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
