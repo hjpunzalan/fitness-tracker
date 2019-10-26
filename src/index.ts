@@ -20,3 +20,26 @@ btns.forEach(btn => {
 		if (formAct && activity) formAct.textContent = activity;
 	});
 });
+
+// form submit
+form &&
+	form.addEventListener('submit', (e: Event) => {
+		e.preventDefault();
+
+		const distance = input && parseInt(input.value);
+		if (distance) {
+			db.collection('activities')
+				.add({
+					distance,
+					activity,
+					date: new Date().toString() // string to ignore firebase timestamps
+				})
+				.then(() => {
+					// Reset errors and input
+					if (error) error.textContent = '';
+					if (input) input.value = '';
+				});
+		} else {
+			if (error) error.textContent = 'Please enter a valid distance';
+		}
+	});
