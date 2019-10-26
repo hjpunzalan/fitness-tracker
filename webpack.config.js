@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const config = {
-	entry: { main: './src/index.ts', vendor: './src/vendor.ts' },
+	entry: { vendor: './src/vendor.ts', main: './src/index.ts' },
 	mode: 'development',
 	output: {
 		path: path.resolve(__dirname, 'build'),

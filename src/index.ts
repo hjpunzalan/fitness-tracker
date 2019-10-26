@@ -1,5 +1,6 @@
 import './main.scss';
 import { btns, form, formAct, input, error } from './View';
+import { db } from './vendor';
 
 let activity: string | undefined = 'cycling';
 
