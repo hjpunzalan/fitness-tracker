@@ -2,6 +2,7 @@ import './main.scss';
 import { btns, form, formAct, input, error } from './View';
 import { db } from './vendor';
 
+// Navigation buttons
 let activity: string | undefined = 'cycling';
 
 btns.forEach(btn => {
