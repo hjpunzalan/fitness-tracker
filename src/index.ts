@@ -1,6 +1,7 @@
 import './main.scss';
 import { btns, form, formAct, input, error } from './View';
 import { db } from './vendor';
+import './graph';
 
 // Navigation buttons
 let activity: string | undefined = 'cycling';
