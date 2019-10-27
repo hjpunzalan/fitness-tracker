@@ -38,7 +38,6 @@ export default (function() {
 		.attr('transform', `translate(0, ${graphHeight})`);
 
 	const yAxisGroup = graph.append('g').attr('class', 'y-axis');
-
 	// update function
 	const update = (data: GraphData[]): void => {
 		//  set scale domains
@@ -46,12 +45,24 @@ export default (function() {
 		y.domain([0, d3.max(data, d => d.distance) as number]);
 
 		// create axis
-		const xAxis = d3.axisBottom(x).ticks(4);
+		const xAxis = d3
+			.axisBottom(x)
+			.ticks(4)
+			.tickFormat(d3.timeFormat('%b %d') as (
+				domainValue: number | Date | { valueOf(): number },
+				index: number
+			) => string);
 		const yAxis = d3.axisLeft(y);
 
 		// call axis - AxisGroup function uses Axis as argument
 		xAxisGroup.call(xAxis);
 		yAxisGroup.call(yAxis);
+
+		// rotate axis text
+		xAxisGroup
+			.selectAll('text')
+			.attr('transform', 'rotate(-40)')
+			.attr('text-anchor', 'end');
 	};
 
 	let data: GraphData[] = [];
