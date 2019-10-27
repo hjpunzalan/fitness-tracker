@@ -27,7 +27,7 @@ export default (function() {
 		.attr('height', graphHeight)
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-	// scales
+	// scales for data
 	const x = d3.scaleTime().range([0, graphWidth]);
 	const y = d3.scaleLinear().range([graphHeight, 0]);
 
@@ -43,6 +43,26 @@ export default (function() {
 		//  set scale domains
 		x.domain(d3.extent(data, d => new Date(d.date)) as Date[]);
 		y.domain([0, d3.max(data, d => d.distance) as number]);
+
+		// create circles for objects
+		const circles = graph.selectAll('circle').data(data);
+
+		// update current points
+		circles
+			.attr('cx', d => x(new Date(d.date)))
+			.attr('cy', d => y(new Date(d.distance)));
+
+		// add new points
+		circles
+			.enter()
+			.append('circle')
+			.attr('r', 4)
+			.attr('cx', d => x(new Date(d.date)))
+			.attr('cy', d => y(new Date(d.distance)))
+			.attr('fill', '#ccc');
+
+		// remove points
+		circles.exit().remove();
 
 		// create axis
 		const xAxis = d3
