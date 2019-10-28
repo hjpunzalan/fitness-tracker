@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-const config = {
+module.exports = {
 	entry: { vendor: './src/vendor.ts', main: './src/index.ts' },
 	mode: 'development',
 	output: {
@@ -21,11 +21,6 @@ const config = {
 				exclude: /node_modules/
 			},
 			{
-				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
-			},
-
-			{
 				test: /\.ts(x)?$/,
 				use: ['awesome-typescript-loader'],
 				exclude: /node_modules/
@@ -36,5 +31,3 @@ const config = {
 		extensions: ['.tsx', '.ts', '.js']
 	}
 };
-
-module.exports = config;
